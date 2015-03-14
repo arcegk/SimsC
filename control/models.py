@@ -12,10 +12,11 @@ class Sim(models.Model):
 
 class Venta(models.Model):
 
-	Fecha = models.DateField(auto_now=True)
-	Vendedor = models.CharField(max_length=50)
-	Sim = models.ForeignKey(Sim)
-
+	fecha = models.DateField(auto_now=True)
+	cliente = models.CharField(max_length=50)
+	sim = models.ForeignKey(Sim)
+	
+	
 	def __str__(self):
 		return ("%s - %s - %s") %(self.Fecha,self.Vendedor,self.Sim.numero)
 		
