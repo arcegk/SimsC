@@ -10,6 +10,9 @@ class Sim(models.Model):
 	def __str__(self):
 		return self.ide
 
+	def save(self):
+		self.numero = self.numero or None
+
 class Venta(models.Model):
 
 	fecha = models.DateField(auto_now=True)
