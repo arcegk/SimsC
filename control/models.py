@@ -17,6 +17,13 @@ class Sim(models.Model):
 		if self.numero == "":
 			self.numero = None
 
+
+class Mes(models.Model):
+	mes = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.mes		
+
 class Venta(models.Model):
 
 	fecha = models.DateField(auto_now=True)
@@ -26,11 +33,3 @@ class Venta(models.Model):
 		
 	def __str__(self):
 		return ("%s - %s - %s") %(self.fecha,self.cliente,self.sim , self.meses.all)
-
-
-class Mes(models.Model):
-	mes = models.CharField(max_length=50)
-
-	def __str__(self):
-		return self.mes		
-
