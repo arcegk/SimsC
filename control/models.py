@@ -11,7 +11,8 @@ class Sim(models.Model):
 		return self.ide
 
 	def save(self):
-		self.numero = self.numero or None
+		if self.email == "":
+			self.email = None
 
 class Venta(models.Model):
 
