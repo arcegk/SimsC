@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 class Sim(models.Model):
 
-	ide = models.CharField(max_length=40)
-	numero = models.CharField(max_length=15 , blank=True)
+	ide = models.CharField(max_length=40 , unique=True)
+	numero = models.CharField(max_length=15 , blank=True , unique=True)
 	activa = models.BooleanField(default=False)
 
 	def __str__(self):
