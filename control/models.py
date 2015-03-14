@@ -4,7 +4,7 @@ from django.db import models
 class Sim(models.Model):
 
 	ide = models.CharField(max_length=40)
-	numero = models.CharField(max_length=15)
+	numero = models.CharField(max_length=15 , blank=True)
 	activa = models.BooleanField(default=False)
 
 	def __str__(self):
