@@ -10,10 +10,12 @@ class Sim(models.Model):
 	def __str__(self):
 		return self.ide
 
-	def save(self):
-		if self.numero == "":
-			self.numero = None
-		super(Sim, self).save(*args, **kwargs)
+	def clean(self):
+        """
+        Clean up blank fields to null
+        """
+        if self.numero == "":
+            self.numero = None
 
 class Venta(models.Model):
 
