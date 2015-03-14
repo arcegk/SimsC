@@ -23,6 +23,6 @@ class Venta(models.Model):
 	
 	
 	def __str__(self):
-		return ("%s - %s - %s") %(self.Fecha,self.Vendedor,self.Sim.numero)
+		return ("%s - %s - %s") %(self.fecha,self.cliente,self.sim.numero)
 		
 
