@@ -11,11 +11,9 @@ class Sim(models.Model):
 		return self.ide
 
 	def clean(self):
-        """
-        Clean up blank fields to null
-        """
-        if self.numero == "":
-            self.numero = None
+        
+		if self.numero == "":
+			self.numero = None
 
 class Venta(models.Model):
 
