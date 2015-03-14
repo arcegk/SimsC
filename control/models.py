@@ -13,6 +13,7 @@ class Sim(models.Model):
 	def save(self):
 		if self.numero == "":
 			self.numero = None
+		super(Sim, self).save(*args, **kwargs)
 
 class Venta(models.Model):
 
