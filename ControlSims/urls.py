@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from control.views import SimListView , VentaListView
+from control.views import SimListView , VentaListView , VentaCreateView
 
 urlpatterns = patterns('',
     # Examples:
@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
     url(r'^$' , SimListView.as_view() , name='listSims'),
+    url(r'^ventas/' , VentaListView.as_view() , name='listVentas'),
+    url(r'^register/' , VentaCreateView.as_view() , name = 'registrar'),
 )

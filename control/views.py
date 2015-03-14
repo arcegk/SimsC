@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Sim , Venta
-from django.views.generic import ListView
+from django.views.generic import ListView , CreateView
 
 
 class SimListView(ListView):
@@ -12,3 +12,7 @@ class VentaListView(ListView):
 	template_name = 'venta.html'
 
 
+class VentaCreateView(CreateView):
+     model = Venta
+     template_name = "registrar.html"
+     success_url = "/register"
