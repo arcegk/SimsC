@@ -1,0 +1,42 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+</script>
+
+{% for mes in object_list%}
+	
+	<button type="button" class="Btn-c" id="{{mes.id}}">{{mes.mes}}</button>
+	
+{% endfor %}
+
+<div id="datos"></div>
+
+<script>
+    $(".Btn-c").on("click" , HizeClick);
+    function HizeClick(){
+    	var id = $(this).attr("id");
+
+
+    	$.ajax({
+
+    		data : {"id" : id},
+    		url : "/consulta-ajax",
+    		type : "get",
+    		success : function(data){
+    			var html;
+    			for(i=0; i<data.lenght ; i++){
+
+    				html += "<div>" + data[i].fields.cliente + "-" + data[i].fields.sim.numero + "-" + data[i].fields.sim.ide +"</div>" ;
+    			}
+    		
+    			$("#datos").html(html);
+    		}
+
+
+
+    	});
+    }
+</script>
+
+</html>

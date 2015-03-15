@@ -1,11 +1,13 @@
 <html>
-
+<body border="1">
 {%for sim in object_list%}
-	
-	<p>{{sim.ide}}</p>
-	<p>{{sim.numero}}</p>
-	<p>{{sim.activa}}</p>
-
+	<table>
+	<tr>
+		<td>{{sim.ide}}</td>
+		<td>{{sim.numero}}</td>
+		<td>{{sim.activa}}</td>
+	</tr>
+	</table>		
 {% endfor %}
-
+</body>
 </html>

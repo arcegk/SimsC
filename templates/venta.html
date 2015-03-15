@@ -1,11 +1,14 @@
 <html>
 
 	{%for venta in object_list%}
-	
-		<p>{{venta.fecha}}</p>
-		<p>{{venta.cliente}}</p>
-		<p>{{venta.sim.numero}}</p>
-		
+	<div>
+		<a href="{% url 'venta_update' venta.pk %}">{{venta.fecha}} - {{venta.cliente}} -{{venta.sim.ide}}-{{venta.sim.numero}} - 
+			{% if venta.meses.all %} 
+				{% for mes in venta.meses.all %}
+					{{mes.mes}}
+				{% endfor%}
+			{% endif %}</a>
+	</div>	
 	{% endfor %}
 
 </html>

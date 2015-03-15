@@ -7,7 +7,7 @@ class Sim(models.Model):
 	numero = models.CharField(max_length=15 ,null=True ,blank=True , unique=True)
 	activa = models.BooleanField(default=False)
 	valor = models.IntegerField(blank=True , default = 0)
-	fecha = models.DateField(auto_now_add=True)
+	fecha = models.DateField(auto_now_add=True )
 
 	def __str__(self):
 		return ("%s - %s") %(self.ide ,self.numero)
@@ -16,6 +16,10 @@ class Sim(models.Model):
         
 		if self.numero == "":
 			self.numero = None
+	def save(self , *args , **kwargs):
+		if self.numero is not None:
+			self.activa = True 
+		super(Sim , self).save(*args , **kwargs)
 
 
 class Mes(models.Model):
@@ -26,10 +30,10 @@ class Mes(models.Model):
 
 class Venta(models.Model):
 
-	fecha = models.DateField(auto_now=True)
+	fecha = models.DateField(auto_now=True , editable=False)
 	cliente = models.CharField(max_length=50)
-	sim = models.ForeignKey(Sim)
+	sim = models.ForeignKey(Sim , unique=True )
 	meses = models.ManyToManyField(Mes)
 		
 	def __str__(self):
-		return ("%s - %s - %s") %(self.fecha,self.cliente,self.sim , self.meses.all)
+		return  ("%s - %s - %s") % (self.cliente , self.sim.numero , self.sim.ide) 

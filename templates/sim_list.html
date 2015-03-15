@@ -1,0 +1,25 @@
+<html>
+<body>
+{%for sim in object_list%}
+	
+	<div><a href="{% url 'sim_update' sim.id %}">{{sim.ide}} - 
+
+			{% if not sim.numero %}
+				Sin número asignado -
+			{% else %}
+				{{sim.numero}} -
+			{% endif %}
+
+				{% if sim.activa %}
+
+					ACTIVA
+				{% else %}
+
+					INACTIVA		
+				{% endif %}
+
+	</a></div>
+		
+{% endfor %}
+</body>
+</html>
