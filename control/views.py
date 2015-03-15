@@ -45,7 +45,9 @@ class ConsultaAjax(View):
 
 	def get(self, request):
 		pk = request.GET['id']
-		obj = Venta.objects.filter(meses__pk=pk)
-		print obj
-		data = serializers.serialize('json' , obj , fields={'cliente' , 'sim.numero' , 'sim.ide'})
-		return HttpResponse(data , content_type='application/json')
+		obj = Venta.objects.all().exclude(meses__pk=pk)
+		dic = []
+		for o in obj:
+			dic.append({'cliente' : o.cliente , 'numero' : o.sim.numero, 'ide' : o.sim.ide, } )
+		print dic
+		return HttpResponse(json.dumps(dic) , content_type='application/json')

@@ -16,6 +16,7 @@
     $(".Btn-c").on("click" , HizeClick);
     function HizeClick(){
     	var id = $(this).attr("id");
+    	$("#datos").html("");
 
 
     	$.ajax({
@@ -24,13 +25,14 @@
     		url : "/consulta-ajax",
     		type : "get",
     		success : function(data){
-    			var html;
-    			for(i=0; i<data.lenght ; i++){
+    			var html = "";
+    			for(i=0; i<data.length ; i++){
 
-    				html += "<div>" + data[i].fields.cliente + "-" + data[i].fields.sim.numero + "-" + data[i].fields.sim.ide +"</div>" ;
+    				html += "<div>" + data[i].cliente + "-" + data[i].numero + "-" + data[i].ide +"</div>" ;
     			}
-    		
+
     			$("#datos").html(html);
+    			
     		}
 
 
