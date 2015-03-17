@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from control.views import VentaListView , VentaCreateView, SimListViewtoUp ,\
- SimUpdateView , VentaUpdateView , MesListView , ConsultaAjax
+from control.views import  SimCreateView, SimListViewtoUp ,\
+ SimUpdateView , MesListView , ConsultaAjax
 
 
 urlpatterns = patterns('',
@@ -11,10 +11,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^sim/(?P<pk>\d+)/editar/$' , SimUpdateView.as_view() , name='sim_update'),
-    url(r'^ventas/(?P<pk>\d+)/editar/' , VentaUpdateView.as_view() , name='venta_update'),
     url(r'^$' ,  SimListViewtoUp.as_view() , name='list_simstoUp'),
-    url(r'^ventas/' , VentaListView.as_view() , name='list_ventas'),
-    url(r'^register/' , VentaCreateView.as_view() , name = 'registrar'),
+    url(r'^register/' , SimCreateView.as_view() , name = 'registrar'),
     url(r'^consulta/' , MesListView.as_view() , name="consulta"),
     url(r'^consulta-ajax/' , ConsultaAjax.as_view() , name = "consulta-ajax")
    

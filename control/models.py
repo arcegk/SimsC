@@ -1,13 +1,22 @@
 from django.db import models
 
 # Create your models here.
+class Mes(models.Model):
+	mes = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.mes		
+
+
 class Sim(models.Model):
 
 	ide = models.CharField(max_length=40 , unique=True)
 	numero = models.CharField(max_length=15 ,null=True ,blank=True , unique=True)
 	activa = models.BooleanField(default=False)
-	valor = models.IntegerField(blank=True , default = 0)
+	valor = models.DecimalField(blank=True , default = 0 , max_digits=200 , decimal_places=1)
 	fecha = models.DateField(auto_now_add=True )
+	cliente = models.CharField(max_length=50 )
+	meses = models.ManyToManyField(Mes)
 
 	def __str__(self):
 		return ("%s - %s") %(self.ide ,self.numero)
@@ -22,18 +31,4 @@ class Sim(models.Model):
 		super(Sim , self).save(*args , **kwargs)
 
 
-class Mes(models.Model):
-	mes = models.CharField(max_length=50)
 
-	def __str__(self):
-		return self.mes		
-
-class Venta(models.Model):
-
-	fecha = models.DateField(auto_now=True , editable=False)
-	cliente = models.CharField(max_length=50)
-	sim = models.ForeignKey(Sim , unique=True )
-	meses = models.ManyToManyField(Mes)
-		
-	def __str__(self):
-		return  ("%s - %s - %s") % (self.cliente , self.sim.numero , self.sim.ide) 
