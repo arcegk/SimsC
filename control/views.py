@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 from .models import Sim , Mes
 from django.views.generic import ListView , CreateView , UpdateView ,View
-from .forms import VentaCreateViewForm , VentaUpdateViewForm , SimUpdateViewForm
+from .forms import SimCreateViewForm , SimUpdateViewForm
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.core import serializers
 from django.http import HttpResponse
@@ -15,7 +15,7 @@ class SimListViewtoUp(ListView):
 
 	
 class SimCreateView(CreateView):
-     model = Venta
+     model = Sim
      form_class = SimCreateViewForm
      template_name = "registrar.html"
      success_url = "/register"
