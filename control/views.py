@@ -37,6 +37,5 @@ class ConsultaAjax(View):
 		obj = Sim.objects.all().exclude(meses__pk=pk)
 		dic = []
 		for o in obj:
-			dic.append({'cliente' : o.cliente , 'numero' : o.sim.numero, 'ide' : o.sim.ide, } )
-		print dic
+			dic.append({'cliente' : o.cliente , 'numero' : o.numero, 'ide' : o.ide, } )
 		return HttpResponse(json.dumps(dic) , content_type='application/json')
