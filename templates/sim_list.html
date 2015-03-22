@@ -1,25 +1,37 @@
 <html>
+{% load static from staticfiles %}
+
+<head>
+ <!-- all css -->
+<link rel="stylesheet" href="{% static 'bootstrap.min.css'%}">
 <body>
+<table class="table table-bordered table-responsive">
+<tr>
+	<th>ID</th>
+	<th>Número</th>
+	<th>Estado</th>
+</tr>
 {%for sim in object_list%}
 	
-	<div><a href="{% url 'sim_update' sim.id %}">{{sim.ide}} - 
-
-			{% if not sim.numero %}
-				Sin número asignado -
-			{% else %}
-				{{sim.numero}} -
-			{% endif %}
-
-				{% if sim.activa %}
+	<tr>
+    <td><a href="{% url 'sim_update' sim.id %}">{{sim.ide}}</a></td>
+    <td>{% if not sim.numero %}
+			Sin número asignado 
+		{% else %}
+			{{sim.numero}} 
+		{% endif %}
+	</td> 
+    <td>{% if sim.activa %}
 
 					ACTIVA
 				{% else %}
 
 					INACTIVA		
-				{% endif %}
+				{% endif %}</td>
+  </tr>
+	
 
-	</a></div>
-		
 {% endfor %}
+</table>
 </body>
 </html>

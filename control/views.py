@@ -11,6 +11,7 @@ from django.http import HttpResponse
 class SimListViewtoUp(ListView):
 
 	model = Sim
+	queryset = Sim.objects.all().order_by('fecha')
 	template_name = 'sim_list.html'
 
 	

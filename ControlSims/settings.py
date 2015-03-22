@@ -31,6 +31,18 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+
+STATIC_ROOT = 'staticfiles'
+
+    # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
+STATIC_URL = '/static/'
+
+    # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
+STATICFILES_DIRS = (
+    join(BASE_DIR, 'static'),
+)
+
+
 ALLOWED_HOSTS = []
 
 
