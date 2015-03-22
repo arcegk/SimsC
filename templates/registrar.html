@@ -1,6 +1,21 @@
 <html>
+{% load bootstrap3 %}
+{% load static from staticfiles %}
+<div class="container">
+<link rel="stylesheet" href="{% static 'bootstrap.min.css'%}">
 <form action="" method="post">{% csrf_token %}
-    {{ form.as_p}}
-    <input type="submit" value="Create" />
+<div class="row">
+     <div class="col-md-12">{% bootstrap_field form.ide %}</div>
+     <div class="col-md-12">{% bootstrap_field form.numero %}</div>
+     <div class="col-md-12">{% bootstrap_field form.cliente %}</div>
+     <div class="col-md-12">{% bootstrap_field form.meses %}</div>
+     {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "star" %} Submit
+        </button>
+    {% endbuttons %}
+
+</div>
 </form>
+</div>
 </html>
