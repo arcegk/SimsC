@@ -1,8 +1,12 @@
-<html>
+<html lang="ES">
 {% load bootstrap3 %}
 {% load static from staticfiles %}
+<head>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
 <div class="container">
-<link rel="stylesheet" href="{% static 'bootstrap.min.css'%}">
 <form action="" method="post">{% csrf_token %}
 <div class="row">
      <div class="col-md-12">{% bootstrap_field form.ide %}</div>
