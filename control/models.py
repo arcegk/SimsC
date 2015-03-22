@@ -15,8 +15,8 @@ class Sim(models.Model):
 	activa = models.BooleanField(default=False)
 	valor = models.DecimalField(blank=True , default = 0 , max_digits=200 , decimal_places=1)
 	fecha = models.DateField(auto_now_add=True )
-	cliente = models.CharField(max_length=50 )
-	meses = models.ManyToManyField(Mes)
+	cliente = models.CharField(max_length=50 , blank=True )
+	meses = models.ManyToManyField(Mes , null = True)
 
 	def __str__(self):
 		return ("%s - %s") %(self.ide ,self.numero)
