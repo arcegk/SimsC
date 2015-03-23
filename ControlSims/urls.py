@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     url(r'^$' ,  SimListViewtoUp.as_view() , name='list_simstoUp'),
     url(r'^register/' , SimCreateView.as_view() , name = 'registrar'),
     url(r'^consulta/' , MesListView.as_view() , name="consulta"),
-    url(r'^consulta-ajax/' , ConsultaAjax.as_view() , name = "consulta-ajax")
+    url(r'^consulta-ajax/' , ConsultaAjax.as_view() , name = "consulta-ajax"),
+    url(r'^login/' , 'django.contrib.auth.views.login' , { 'template_name' : 'login.html'  }) ,
    
 
 )

@@ -6,26 +6,31 @@ from .forms import SimCreateViewForm , SimUpdateViewForm
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.core import serializers
 from django.http import HttpResponse
+from braces.views import LoginRequiredMixin , StaffuserRequiredMixin
 
 
-class SimListViewtoUp(ListView):
+class SimListViewtoUp(LoginRequiredMixin, ListView):
 
 	model = Sim
 	queryset = Sim.objects.all().order_by('fecha')
 	template_name = 'sim_list.html'
+	login_url = "/login"
+
 
 	
-class SimCreateView(CreateView):
+class SimCreateView(StaffuserRequiredMixin, CreateView):
      model = Sim
      form_class = SimCreateViewForm
      template_name = "registrar.html"
      success_url = "/register"
+     login_url = "/login"
 
-class SimUpdateView(UpdateView):
+class SimUpdateView(StaffuserRequiredMixin, UpdateView):
 	model = Sim
 	form_class = SimUpdateViewForm
 	template_name = "sims_update.html"
 	success_url = reverse_lazy('list_simstoUp')
+	login_url = "/login"
 
 class MesListView(ListView):
 	model = Mes
