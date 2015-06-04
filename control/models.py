@@ -13,7 +13,7 @@ class Sim(models.Model):
 	ide = models.CharField(max_length=40 , unique=True)
 	numero = models.CharField(max_length=15 ,null=True ,blank=True , unique=True)
 	activa = models.BooleanField(default=False)
-	valor = models.DecimalField(blank=True , default = 0 , max_digits=200 , decimal_places=0 )
+	valor = models.DecimalField(blank=True , default = 0 , max_digits=200 , decimal_places=1 )
 	fecha = models.DateField(auto_now_add=True)
 	cliente = models.CharField(max_length=50 , blank=True )
 	meses = models.ManyToManyField(Mes , null = True)

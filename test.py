@@ -1,5 +1,5 @@
 # Full path and name to your csv file
-csv_filepathname="/home/arce/Control/ControlSims/test.csv"
+csv_filepathname="/Users/koombea/projects/ControlSims/SimsC/test1.csv"
 # Full path to your django project directory
 your_djangoproject_home="/home/arce/Control"
 
@@ -18,7 +18,7 @@ for row in dataReader:
 		zipcode = Sim()
 		zipcode.numero = row[0]
 		zipcode.ide = row[1]
-		zipcode.valor = row[2]
+		zipcode.valor = 0
 		zipcode.activa = True
 		zipcode.fecha = datetime.datetime.now()
 		zipcode.save()
